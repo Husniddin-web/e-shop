@@ -1,0 +1,20 @@
+.size-button-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+
+    .size-item {
+        background-color: #F0F0F0;
+        padding: 10px 15px;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    .size-item.selected {
+        background-color: #000000;
+        color: white;
+    }
+
+
+}

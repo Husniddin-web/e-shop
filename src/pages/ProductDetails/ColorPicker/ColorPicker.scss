@@ -1,0 +1,15 @@
+.detail-colors-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    .color-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}

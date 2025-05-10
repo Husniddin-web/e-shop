@@ -1,0 +1,13 @@
+.size-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .size-item {
+        background-color: #F0F0F0;
+        padding: 5px 12px;
+        color: black;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+}
