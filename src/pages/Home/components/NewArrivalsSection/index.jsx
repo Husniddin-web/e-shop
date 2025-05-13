@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NewArrivals.scss";
 import { useProducts } from "../../../../hooks";
-import { Card, CardSkelton } from "../../../../components";
+import { Button, Card, CardSkelton } from "../../../../components";
 
 function NewArrivals() {
   const { data, isLoading } = useProducts();
+  const [showAll, setShowAll] = useState(false); // state to toggle full product list
+
+  const visibleProducts = showAll ? data : data?.slice(0, 4);
 
   return (
     <div className="container">
@@ -14,12 +17,17 @@ function NewArrivals() {
 
       <div className="item-cards">
         {isLoading
-          ? Array.from({ length: 8 }).map((_, i) => <CardSkelton key={i} />)
-          : data
-              ?.slice(0, 8)
-              .map((product) => <Card key={product.id} product={product} />)}
+          ? Array.from({ length: 4 }).map((_, i) => <CardSkelton key={i} />)
+          : visibleProducts?.map((product) => (
+              <Card key={product.id} product={product} />
+            ))}
       </div>
 
+      <div className="show-all-btn">
+        <button onClick={() => setShowAll(!showAll)}>
+          {showAll ? "Hide" : "View All"}
+        </button>
+      </div>
       <hr />
     </div>
   );

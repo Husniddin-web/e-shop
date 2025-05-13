@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.scss";
 import { MdClear } from "react-icons/md";
 import { BiCart, BiSearch } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { FiMenu } from "react-icons/fi";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
+import { getCarts } from "../../utils/localstorge";
 
 function Header() {
   const [isFragmentVisible, setIsFragmentVisible] = useState(true);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 770);
 
   const handleClearClick = () => {
     setIsFragmentVisible(false);
@@ -18,6 +20,20 @@ function Header() {
     setIsBurgerOpen(!isBurgerOpen);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 770);
+      if (window.innerWidth > 770) {
+        setIsBurgerOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  const carts = getCarts();
+
+  console.log(carts.length);
   return (
     <header>
       {isFragmentVisible && (
@@ -31,19 +47,27 @@ function Header() {
       )}
       <div className="container">
         <div className="navbar-wrapper">
-          <div className="burger-icon" onClick={toggleBurger}>
-            <FiMenu />
-          </div>
+          {isMobile && (
+            <div className="burger-icon" onClick={toggleBurger}>
+              <FiMenu />
+            </div>
+          )}
 
-          <Link to={"/"}>
+          <Link to="/" className="logo">
             <h3>SHOP.CO</h3>
           </Link>
 
-          <div className={`content-ul ${isBurgerOpen ? "open" : ""}`}>
+          <div className={`nav-menu ${isBurgerOpen ? "open" : ""}`}>
             <ul>
-              <li>On Sale</li>
-              <li>New Arrivals</li>
-              <li>Brands</li>
+              <li>
+                <Link to="/on-sale">On Sale</Link>
+              </li>
+              <li>
+                <Link to="/new-arrivals">New Arrivals</Link>
+              </li>
+              <li>
+                <Link to="/brands">Brands</Link>
+              </li>
             </ul>
           </div>
 
@@ -52,10 +76,30 @@ function Header() {
             <input type="text" placeholder="Search for products..." />
           </div>
 
-          <div className="card-and-profile-icons">
-            <BiSearch className="mobile-search-icon" />
-            <BiCart />
-            <CgProfile />
+          <div className="nav-actions">
+            {isMobile ? (
+              <>
+                <BiSearch className="mobile-search-icon" />
+                <Link to={"/card"}>
+                  <div className="card-icon">
+                    <BiCart />
+                    <div className="cart-br">{carts.length}</div>
+                  </div>
+                </Link>
+                <CgProfile />
+              </>
+            ) : (
+              <>
+                <Link to={"/card"}>
+                  {" "}
+                  <div className="card-icon">
+                    <BiCart />
+                    <div className="cart-br">{carts.length}</div>
+                  </div>
+                </Link>
+                <CgProfile />
+              </>
+            )}
           </div>
         </div>
       </div>

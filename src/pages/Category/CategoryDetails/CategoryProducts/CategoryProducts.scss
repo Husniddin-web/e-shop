@@ -1,4 +1,12 @@
-.category-cards-wrapper{
+.category-cards-wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.not-found {
+    display: flex;
+    justify-content: center;
+    align-self: center;
 }

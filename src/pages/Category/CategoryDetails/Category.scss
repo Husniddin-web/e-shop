@@ -1,5 +1,224 @@
+// Responsive mixins
+@mixin respond-to($breakpoint) {
+    @if $breakpoint ==mobile {
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==tablet {
+        @media (min-width: 768px) and (max-width: 1023px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==desktop {
+        @media (min-width: 1024px) {
+            @content;
+        }
+    }
+}
+
 .category-details-wrapper {
     display: flex;
-    justify-content: space-between;
     gap: 20px;
+
+    @include respond-to(mobile) {
+        flex-direction: column;
+    }
+}
+
+.filter-toggle-mobile {
+    display: none;
+
+    @include respond-to(mobile) {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: bold;
+        margin: 20px 0;
+        cursor: pointer;
+    }
+}
+
+.filter-side-wrapper {
+    min-width: 295px;
+    border: 1px solid #00000030;
+    border-radius: 20px;
+    padding: 20px 24px;
+    position: sticky;
+    top: 20px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    align-self: flex-start;
+    background-color: white;
+    z-index: 100;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    .filter-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        h3 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+    }
+
+    .filter-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        cursor: pointer;
+        text-decoration: none;
+        color: black;
+
+        &:hover {
+            color: #666;
+        }
+    }
+
+    .hr-line {
+        height: 1px;
+        background-color: #00000020;
+        margin: 20px 0;
+    }
+
+    .accordion {
+        margin-bottom: 24px;
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+
+            p {
+                font-size: 20px;
+                font-weight: 700;
+                margin-top: 0;
+            }
+        }
+    }
+
+    .arrow {
+        transform: rotate(0);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .arrow-top {
+        transform: rotate(-90deg);
+    }
+
+    .arrow-down {
+        transform: rotate(90deg);
+    }
+
+    .accordion-body {
+        height: 70px;
+        transition: all 0.3s ease-in-out;
+        overflow: hidden;
+    }
+
+    .color-accordion {
+        height: 100px;
+    }
+
+    .accordion-body.hide {
+        height: 0;
+    }
+
+    .custom-range * {
+        background-color: black !important;
+    }
+
+    .custom-range {
+        margin-top: 20px;
+    }
+
+    .sizes {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .size-accordion {
+        height: 200px;
+    }
+
+    .apply-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+
+        button {
+            color: white;
+            background-color: black;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 15px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #333;
+            }
+        }
+    }
+
+    @include respond-to(mobile) {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-height: 100vh;
+        overflow-y: auto;
+        padding-top: 60px;
+        border-radius: 0;
+        z-index: 1000;
+    }
+
+    &.open {
+        @include respond-to(mobile) {
+            display: block !important;
+        }
+    }
+
+    .close-btn-mobile {
+        display: none;
+
+        @include respond-to(mobile) {
+            display: block;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+    }
 }

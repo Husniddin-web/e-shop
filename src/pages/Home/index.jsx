@@ -6,13 +6,14 @@ import {
   TopSellingSection,
 } from "./components";
 
-import { useCategories, useProducts } from "../../hooks";
 import CategoryFields from "./components/CategoryFields";
+import BrandsAd from "./components/BrandsAdSection";
 
 const HomePage = () => {
   return (
     <div>
       <MainSection />
+      <BrandsAd />
       <CategoryFields />
       <NewArrivalsSection />
       <TopSellingSection />

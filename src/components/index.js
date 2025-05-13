@@ -9,3 +9,7 @@ export { default as CardSkelton } from "./CardSkeltion"
 export { default as Card } from "./Card"
 
 export { default as DataNotFound } from "./DataNotFoun"
+
+
+export { default as CustomerReview } from "./Customerreview"
+export { default as ImgGrid } from "./ImgGrid"

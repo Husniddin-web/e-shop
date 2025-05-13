@@ -33,3 +33,19 @@ hr {
     margin-top: 64px;
     color: #0000001A;
 }
+
+.show-all-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+
+    button {
+        width: 218px;
+        background-color: inherit;
+        border: 1px solid rgb(187, 185, 185);
+        border-radius: 20px;
+        padding:  15px;
+        cursor: pointer;
+    }
+}

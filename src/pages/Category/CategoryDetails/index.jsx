@@ -1,20 +1,33 @@
-import React, { useEffect, useState } from "react";
-import ReactRangeSliderInput from "react-range-slider-input";
-
+import React, { useState } from "react";
 import "react-range-slider-input/dist/style.css";
-import "./Category.scss";
 import FilterSidebar from "./FilterSidebar";
 import { BreadCrumb } from "../../../components";
 import CategoryProducts from "./CategoryProducts";
+import { FilterIcon } from "../../../assets/icons";
+import "./Category.scss";
 
 const CategoryDetails = () => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   return (
     <div className="container">
       <BreadCrumb />
-      <div className="category-details-wrapper">
-        <div>
-          <FilterSidebar />
+
+      {!isFilterOpen && (
+        <div
+          className="filter-toggle-mobile"
+          onClick={() => setIsFilterOpen(true)}
+        >
+          <FilterIcon />
+          <span>Filter</span>
         </div>
+      )}
+
+      <div className="category-details-wrapper">
+        <FilterSidebar
+          isMobileOpen={isFilterOpen}
+          setIsMobileOpen={setIsFilterOpen}
+        />
         <div className="category-products">
           <CategoryProducts />
         </div>

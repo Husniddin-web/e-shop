@@ -1,12 +1,17 @@
+.brands-ad {
+    background-color: black;
+}
+
 .brands {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 70px;
+    justify-content: space-between;
+    color: white;
 
     p {
         align-items: center;
-        font-size: 50px;
+        font-size: 40px;
     }
 
     .versace {

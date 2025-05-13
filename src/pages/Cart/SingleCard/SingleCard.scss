@@ -1,0 +1,47 @@
+.checout-wrapper {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    align-items: flex-start;
+}
+
+.cards {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.checkout {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: #fafafa;
+
+    h3 {
+        margin-bottom: 15px;
+    }
+
+    .summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        &.total {
+            font-weight: bold;
+        }
+
+        .discount {
+            color: green;
+        }
+    }
+
+    .promo-input {
+        width: 100%;
+        padding: 10px;
+        margin: 15px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+}

@@ -1,21 +1,30 @@
 import React from "react";
 import { useLocation, useParams } from "react-router";
 
-import "./CategoryProducts.scss";
 import { useProductByFilter } from "../../../../hooks";
-import { Card, CardSkelton, DataNotFound } from "../../../../components";
+import { Card, CardSkelton } from "../../../../components";
 
+import "./CategoryProducts.scss";
 const CategoryProducts = () => {
   const params = useParams();
   const location = useLocation();
+  console.log(location);
   const {
     data = [],
     isLoading,
     isError,
-    error,
-  } = useProductByFilter(`?category=${params.categoryId}`);
+  } = useProductByFilter(
+    `?category=${params.categoryId}${
+      location.search ? `&${location.search.substring(1)}` : ""
+    }`
+  );
 
-  if (isError) return <DataNotFound />;
+  if (isError)
+    return (
+      <div className="not-found">
+        <h1>Some thing went wrong</h1>
+      </div>
+    );
   return (
     <>
       <div className="category-section">

@@ -1,0 +1,43 @@
+.coment-wrapper {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    padding: 20px;
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+    .stars {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        .stars-row {
+            display: flex;
+            gap: 3px;
+        }
+
+        .star-icon {
+            color: gold;
+            font-size: 18px;
+        }
+
+        p {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: 0;
+        }
+
+        .review-date {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .review-text {
+            font-size: 14px;
+            color: #444;
+        }
+    }
+}

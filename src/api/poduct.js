@@ -15,6 +15,7 @@ export const getProductsApi = async () => {
 export const getProductsByFilterApi = async (params) => {
   try {
     const res = await instance.get(`/products${params}`);
+    console.log(instance);
     return res.data;
   } catch (error) {
     toast.error("Failed to fetch products");

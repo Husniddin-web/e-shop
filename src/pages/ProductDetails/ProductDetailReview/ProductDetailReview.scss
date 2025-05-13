@@ -1,0 +1,91 @@
+.product-review-wrapper {
+    margin-top: 50px;
+
+    .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .all-review-text {
+            font-size: 24px;
+            line-height: 100%;
+            letter-spacing: 0%;
+
+            .reveiw-count {
+                font-size: 13px;
+                color: rgb(150, 148, 148);
+            }
+        }
+
+        .header-btns {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            .filter {
+                background-color: #F0F0F0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 5px 8px;
+                border-radius: 12px;
+            }
+
+            .time-btn {
+                background-color: #F0F0F0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 8px 15px;
+                border-radius: 12px;
+                font-size: 15px;
+            }
+
+            .write-review {
+                background-color: black;
+                color: white;
+                padding: 8px 12px;
+                border-radius: 12px;
+            }
+        }
+    }
+
+    .reviews-wrapper {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .get-allpreview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+
+        button {
+            background-color: inherit;
+            border: 1px solid rgb(163, 161, 161);
+            width: 140px;
+            padding: 12px;
+            border-radius: 12px;
+        }
+    }
+
+    .similar-products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .similar-produc-title {
+        text-align: center;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+    }
+}

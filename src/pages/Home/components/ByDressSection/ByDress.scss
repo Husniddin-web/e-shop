@@ -1,35 +1,90 @@
+// Responsive Mixins
+@mixin respond-to($breakpoint) {
+    @if $breakpoint ==mobile {
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==tablet {
+        @media (min-width: 768px) and (max-width: 1023px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==desktop {
+        @media (min-width: 1024px) {
+            @content;
+        }
+    }
+}
+
 .dress-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 80px;
-    width: 1239px;
-    height: 920px;
     border-radius: 62px;
     background-color: #F0F0F0;
-  
+    padding: 40px;
+
     h3 {
         font-family: 'Poppins';
-      margin-top: 70px;
-      font-size: 48px;
-      font-weight: 1000;
+        margin-top: 70px;
+        font-size: 48px;
+        font-weight: 1000;
+
+        @include respond-to(tablet) {
+            font-size: 36px;
+        }
+
+        @include respond-to(mobile) {
+            font-size: 24px;
+            margin-top: 40px;
+        }
     }
-  
+
     .img-wrapper {
-      margin-top: 64px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-  
-      .img-row {
+        margin-top: 64px;
         display: flex;
+        flex-direction: column;
         gap: 20px;
-      }
+
+        @include respond-to(mobile) {
+            margin-top: 30px;
+            gap: 10px;
+        }
+
+        .img-row {
+            display: flex;
+            gap: 20px;
+
+            @include respond-to(mobile) {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .img-container {
+                flex: 1;
+                display: flex;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    border-radius: 20px;
+                }
+            }
+        }
     }
 }
 
 .coments {
     margin-bottom: 250px;
+
+    @include respond-to(mobile) {
+        margin-bottom: 100px;
+    }
 
     .customers {
         display: flex;
@@ -41,40 +96,37 @@
             font-size: 48px;
             font-weight: 1000;
             margin-top: 80px;
+
+            @include respond-to(tablet) {
+                font-size: 36px;
+            }
+
+            @include respond-to(mobile) {
+                font-size: 24px;
+                margin-top: 40px;
+            }
         }
 
         .icons {
             display: flex;
             font-size: 30px;
             gap: 20px;
+
+            @include respond-to(mobile) {
+                font-size: 20px;
+                gap: 10px;
+            }
         }
     }
 
     .our-happy {
         display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
         gap: 20px;
 
-        .coment-wrapper {
-            display: flex;
-            width: 400px;
-            height: 200px;
-            border: 1px solid #0000001A;
-            border-radius: 20px;
-            padding: 30px;
-    
-            .stars { 
-                .star-icon{
-                    width: 24px;
-                    height: 24px;
-                    gap: 10px;
-                    color: yellow;
-                }
-
-                p {
-                    display: flex;
-                    align-items: center;
-                }
-            }
+        @include respond-to(mobile) {
+            gap: 10px;
         }
     }
 }

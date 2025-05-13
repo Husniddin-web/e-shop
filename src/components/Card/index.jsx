@@ -32,7 +32,7 @@ const Card = ({ product }) => {
   return (
     <div>
       <img src={images[0]} alt={title} className="product-image" />
-      <div>
+      <div className="card-header">
         <FaRegHeart />
         <MdAddShoppingCart />
       </div>

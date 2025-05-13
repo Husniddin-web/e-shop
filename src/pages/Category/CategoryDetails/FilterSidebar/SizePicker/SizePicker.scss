@@ -10,4 +10,9 @@
         border-radius: 12px;
         cursor: pointer;
     }
+
+    .size-item.selected {
+        background-color: black;
+        color: white;
+    }
 }

@@ -14,6 +14,7 @@ const Button = (props) => {
     <button
       className={`button btn-${type} btn-${size}`}
       style={{ padding: `${py}px ${px}px ` }}
+      {...props}
     >
       {children}
     </button>
